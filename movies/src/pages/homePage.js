@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { getMovies } from "../api/tmdb-api";
+import React, { useEffect, useContext } from "react";
+import { UserContext } from "../contexts/userContext";
+import { getMovies } from "../api/movies-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -8,7 +9,9 @@ import { Grid, Pagination } from "@mui/material";
 import { useState } from "react";
 
 const HomePage = (props) => {
-  let { data, error, isLoading, isError } = useQuery('discover', getMovies)
+  const { token } = useContext(UserContext)
+  
+  let { data, error, isLoading, isError } = useQuery('discover', () => getMovies(1, token))
 
   const [movies, setMovies] = useState([]);
 

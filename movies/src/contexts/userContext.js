@@ -4,6 +4,7 @@ export const UserContext = React.createContext(null);
 
 const UserContextProvider = (props) => {
   const [loggedIn, setLoggedIn] = useState()
+  const [token, setToken] = useState()
 
   const logIn = () => {
     setLoggedIn( true )
@@ -20,6 +21,8 @@ const UserContextProvider = (props) => {
         loggedIn,
         logIn,
         logOut,
+        token,
+        setToken
       }}
     >
       {props.children}

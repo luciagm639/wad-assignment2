@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { UserContext } from "../contexts/userContext";
 import { useContext } from 'react';
@@ -14,7 +12,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const { loggedIn, logIn } = useContext(UserContext)
+    const { loggedIn, logIn, setToken } = useContext(UserContext)
     useEffect(() => { if (loggedIn) { navigate("/home") } })
 
     const onLogin = async (e) => {
@@ -23,7 +21,9 @@ const Login = () => {
             .then((success) => {
                 // Logged in
                 logIn();
-                console.log(success);
+                const token = success.token.split(' ')[1];
+                console.log(token);
+                setToken(token)
                 navigate("/login")
             })
             .catch((error) => {
