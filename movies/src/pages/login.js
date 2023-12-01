@@ -6,6 +6,7 @@ import { UserContext } from "../contexts/userContext";
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import { CardHeader, Card, Typography, CardContent, Grid, TextField, Button } from '@mui/material';
+import { authenticateUser } from '../api/users-api';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -16,22 +17,20 @@ const Login = () => {
     const { loggedIn, logIn } = useContext(UserContext)
     useEffect(() => { if (loggedIn) { navigate("/home") } })
 
-    const onLogin = (e) => {
+    const onLogin = async (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
+        await authenticateUser(email, password)
+            .then((success) => {
+                // Logged in
                 logIn();
-                navigate("/home")
-                console.log(user);
+                console.log(success);
+                navigate("/login")
             })
             .catch((error) => {
                 const errorCode = error.code;
                 setErrorMessage(error.message);
-                console.log(errorCode, errorMessage)
-            });
-
+                console.log(errorCode, errorMessage);
+            })
     }
 
     return (
@@ -71,7 +70,7 @@ const Login = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         style={{ padding: 10 }}
                                     />
-                                    <Grid container style={{justifyContent: 'center'}}>
+                                    <Grid container style={{ justifyContent: 'center' }}>
                                         <Button
                                             color="secondary"
                                             variant="contained"

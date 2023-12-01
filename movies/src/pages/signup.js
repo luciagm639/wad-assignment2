@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
 import { UserContext } from "../contexts/userContext";
 import { useContext } from 'react';
 import { Card, CardContent, Grid, CardHeader, Typography, TextField, Button } from '@mui/material';
+import { registerUser } from '../api/users-api';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -16,26 +15,20 @@ const Signup = () => {
     const { loggedIn } = useContext(UserContext)
     console.log(loggedIn)
     useEffect(() => { if (loggedIn) { navigate("/home") } })
-    
+
     const onSubmit = async (e) => {
         e.preventDefault()
-
-        await createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+        await registerUser(email, password)
+            .then((success) => {
                 // Signed in
-                const user = userCredential.user;
-                console.log(user);
+                console.log(success);
                 navigate("/login")
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 setErrorMessage(error.message);
                 console.log(errorCode, errorMessage);
-                // ..
-            });
-
-
+            })
     }
 
     return (
@@ -73,7 +66,7 @@ const Signup = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                     style={{ padding: 10 }}
                                 />
-                                <Grid container style={{justifyContent: 'center'}}>
+                                <Grid container style={{ justifyContent: 'center' }}>
                                     <Button
                                         color="secondary"
                                         variant="contained"
