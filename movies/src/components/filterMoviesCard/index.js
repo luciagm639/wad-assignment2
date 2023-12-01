@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -10,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
-import { getGenres } from "../../api/tmdb-api";
+import { getGenres } from "../../api/movies-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 import { Slider } from "@mui/material";
@@ -23,8 +24,8 @@ const formControl =
 };
 
 export default function FilterMoviesCard(props) {
-
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { token } = useContext(UserContext)
+  const { data, error, isLoading, isError } = useQuery("genres", () => getGenres(token));
 
   if (isLoading) {
     return <Spinner />;

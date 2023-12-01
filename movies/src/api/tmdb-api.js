@@ -100,6 +100,7 @@ export const getActor = (args) => {
     });
 };
 
+/*
 export const getGenres = async () => {
   return fetch(
     "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
@@ -115,6 +116,7 @@ export const getGenres = async () => {
       throw error
     });
 };
+*/
 
 export const getMovieImages = ({ queryKey }) => {
   const [, idPart] = queryKey;

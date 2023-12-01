@@ -39,3 +39,45 @@ export const getUpcomingMovies = (page = 1, token) => {
             throw error
         });
 };
+
+export const getGenres = (token) => {
+
+    return fetch(
+        `http://localhost:8080/api/movies/tmdb/genres`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error(response.json().message);
+        }
+        return response.json();
+    })
+        .catch((error) => {
+            throw error
+        });
+};
+
+export const getMovie = (id, token) => {
+
+    return fetch(
+        `http://localhost:8080/api/movies/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error(response.json().message);
+        }
+        return response.json();
+    })
+        .catch((error) => {
+            throw error
+        });
+};
