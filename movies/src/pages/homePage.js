@@ -32,7 +32,7 @@ const HomePage = (props) => {
   const handleChangePage = async (e, value) => {
     try {
       // Realiza tu consulta y obtén los datos
-      const data = await getMovies(value);
+      const data = await getMovies(value, token);
 
       if (data && data.results) {
         setMovies(data.results);
