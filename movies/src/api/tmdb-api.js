@@ -122,7 +122,7 @@ export const getGenres = async () => {
     });
 };
 */
-
+/*
 export const getMovieImages = ({ queryKey }) => {
   const [, idPart] = queryKey;
   const { id } = idPart;
@@ -139,6 +139,7 @@ export const getMovieImages = ({ queryKey }) => {
       throw error
     });
 };
+*/
 
 export const getActorImages = ({ queryKey }) => {
   const [, idPart] = queryKey;

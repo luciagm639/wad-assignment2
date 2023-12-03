@@ -105,9 +105,7 @@ export const getActor = (id) => {
         });
 };
 
-export const getMovieImages = ({ queryKey }) => {
-    const [, idPart] = queryKey;
-    const { id } = idPart;
+export const getMovieImages = (id) => {
     return fetch(
         `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.TMDB_KEY}`
     ).then((response) => {
