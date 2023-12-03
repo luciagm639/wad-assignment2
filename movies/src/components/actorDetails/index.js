@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import SentimentVeryDissatisfiedSharpIcon from '@mui/icons-material/SentimentVeryDissatisfiedSharp';
 import CakeIcon from '@mui/icons-material/Cake';
 import Typography from "@mui/material/Typography";
-import { getActorMovies } from "../../api/tmdb-api";
+import { getActorMovies } from "../../api/movies-api";
 import MovieList from "../movieList";
 import { useQuery } from "react-query";
 import AddToMustWatchIcon from "../cardIcons/addToMustWatch";
@@ -21,10 +22,10 @@ const root = {
 
 
 const ActorDetails = ({ actor }) => {  // Don't miss this!
-
+  const { token } = useContext(UserContext)
   const nameOfQuery = actor.id + 'Movies'
-  const { data, error, isLoading, isError } = useQuery(nameOfQuery, () => getActorMovies(actor.id))
-
+  const { data, error, isLoading, isError } = useQuery(nameOfQuery, () => getActorMovies(actor.id, token))
+  
   return (
     <>
       <Typography variant="h5" component="h3">

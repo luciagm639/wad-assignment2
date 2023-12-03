@@ -13,6 +13,8 @@ import {
     getMovieImages,
     getActorImages,
     getMovieRecommendations,
+    getMovieActors,
+    getActorMovies
 } from '../tmdb-api';
 
 const router = express.Router();
@@ -127,6 +129,24 @@ router.get('/:id/recommendations', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const images = await getMovieRecommendations(id)
     res.status(200).json(images);
+}));
+
+router.get('/:id/credits', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const images = await getMovieActors(id)
+    res.status(200).json(images);
+}));
+
+// Get movie details
+router.get('/actor/:id/movies', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const movies = await getActorMovies(id)
+    if (movies) {
+        res.status(200).json(movies);
+    } else {
+        res.status(404).json({ message: 'The movies you requested could not be found.', status_code: 404 });
+    }
+
 }));
 
 export default router;

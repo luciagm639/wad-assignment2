@@ -178,6 +178,7 @@ export const getMovieRecommendations = (id) => {
     });
 };
 */
+/*
 export const getMovieActors = (id) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
@@ -187,7 +188,8 @@ export const getMovieActors = (id) => {
       return json.cast;
     });
 };
-
+*/
+/*
 export const getActorMovies = (id) => {
   return fetch(
     `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
@@ -197,3 +199,4 @@ export const getActorMovies = (id) => {
       return json.cast;
     });
 };
+*/

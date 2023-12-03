@@ -135,16 +135,6 @@ export const getActorImages = (id) => {
         });
 };
 
-export const getMovieReviews = (id) => {
-    return fetch(
-        `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.TMDB_KEY}`
-    )
-        .then((res) => res.json())
-        .then((json) => {
-            return json.results;
-        });
-};
-
 export const getMovieRecommendations = (id) => {
     return fetch(
         `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.TMDB_KEY}`
