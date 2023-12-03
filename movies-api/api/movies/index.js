@@ -1,4 +1,5 @@
 import movieModel from './movieModel';
+import reviewModel from '../reviews/reviewModel';
 import asyncHandler from 'express-async-handler';
 import express from 'express';
 import {
@@ -11,6 +12,7 @@ import {
     getActor,
     getMovieImages,
     getActorImages,
+    getMovieRecommendations,
 } from '../tmdb-api';
 
 const router = express.Router();
@@ -102,6 +104,28 @@ router.get('/:id/images', asyncHandler(async (req, res) => {
 router.get('/actor/:id/images', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const images = await getActorImages(id)
+    res.status(200).json(images);
+}));
+
+// Get movie reviews
+router.get('/:id/reviews', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    let reviews = await reviewModel.findByMovieDBId(id);
+    if (reviews) {
+        res.status(200).json(reviews);
+    } else {
+        movie = await getMovie(id)
+        if (movie) {
+            res.status(200).json(movie);
+        } else {
+            res.status(404).json({ message: 'The movie you requested could not be found.', status_code: 404 });
+        }
+    }
+}));
+
+router.get('/:id/recommendations', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const images = await getMovieRecommendations(id)
     res.status(200).json(images);
 }));
 
