@@ -10,7 +10,10 @@ const MovieSchema = new Schema({
   overview: { type: String },
   release_date: { type: String },
   original_title: { type: String },
-  genre_ids: [{ type: Number }],
+  genres: [{ 
+    id: {type: Number},
+    name: {type: String} 
+  }],
   original_language: { type: String },
   title: { type: String },
   backdrop_path: { type: String },
@@ -22,6 +25,7 @@ const MovieSchema = new Schema({
     iso_3166_1: { type: String },
     name: { type: String }
   }],
+  revenue: { type: Number },
   runtime: { type: Number },
   spoken_languages: [{
     iso_639_1: { type: String },

@@ -1,20 +1,22 @@
 import React, { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
-import { getMovie } from "../api/tmdb-api";
+import { getMovie } from "../api/movies-api";
 import Spinner from '../components/spinner'
 import RemoveFromMustWatch from "../components/cardIcons/removeFromMustWatch";
 
 const MustWatchMoviesPage = () => {
+  const { token } = useContext(UserContext)
   const {mustWatch: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run in parallel.
   const mustWatchMovieQueries = useQueries(
     movieIds.map((movieId) => {
       return {
-        queryKey: ["movie", { id: movieId }],
-        queryFn: getMovie,
+        queryKey: ["movie"+movieId],
+        queryFn: () => getMovie(movieId, token),
       };
     })
   );
@@ -29,8 +31,6 @@ const MustWatchMoviesPage = () => {
     q.data.genre_ids = q.data.genres.map(g => g.id)
     return q.data
   });
-
-  const toDo = () => true;
 
   return (
     <PageTemplate

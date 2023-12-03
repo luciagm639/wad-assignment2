@@ -2,10 +2,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/jeAQdDX9nguP6YOX6QSWKDPkbBo.jpg",
-        "genre_ids": [
-            28,
-            14,
-            878
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
         ],
         "id": 590706,
         "original_language": "en",
@@ -22,10 +31,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/vam9VHLZl8tqNwkp1zjEAxIOrkk.jpg",
-        "genre_ids": [
-            10751,
-            14,
-            10770
+        "genres": [
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 10770,
+                "name": "TV Movie"
+            }
         ],
         "id": 671583,
         "original_language": "en",
@@ -42,10 +60,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/wzJRB4MKi3yK138bJyuL9nx47y6.jpg",
-        "genre_ids": [
-            28,
-            53,
-            878
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
         ],
         "id": 577922,
         "original_language": "en",
@@ -62,10 +89,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/ckfwfLkl0CkafTasoRw5FILhZAS.jpg",
-        "genre_ids": [
-            28,
-            35,
-            14
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
         ],
         "id": 602211,
         "original_language": "en",
@@ -82,8 +118,11 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/zKv7KF0pH9ASv2uGgTvTylMlxQn.jpg",
-        "genre_ids": [
-            37
+        "genres": [
+            {
+                "id": 37,
+                "name": "Western"
+            }
         ],
         "id": 729648,
         "original_language": "en",
@@ -100,10 +139,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg",
-        "genre_ids": [
-            80,
-            53,
-            18
+        "genres": [
+            {
+                "id": 80,
+                "name": "Crime"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
         ],
         "id": 475557,
         "original_language": "en",
@@ -120,10 +168,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/mZgbq4Zpxz7ozWXl4asj6vNdlIi.jpg",
-        "genre_ids": [
-            35,
-            10751,
-            14
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
         ],
         "id": 454433,
         "original_language": "en",
@@ -140,9 +197,15 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/2Fk3AB8E9dYIBc2ywJkxk8BTyhc.jpg",
-        "genre_ids": [
-            28,
-            53
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
         ],
         "id": 524047,
         "original_language": "en",
@@ -159,11 +222,23 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/qAKvUu2FSaDlnqznY4VOp5PmjIF.jpg",
-        "genre_ids": [
-            28,
-            12,
-            18,
-            14
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
         ],
         "id": 337401,
         "original_language": "en",
@@ -180,9 +255,15 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/86L8wqGMDbwURPni2t7FQ0nDjsH.jpg",
-        "genre_ids": [
-            28,
-            53
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
         ],
         "id": 724989,
         "original_language": "en",
@@ -199,10 +280,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/5846jHODKbja38USbFcXgOnsfqb.jpg",
-        "genre_ids": [
-            10751,
-            14,
-            12
+        "genres": [
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            }
         ],
         "id": 654028,
         "original_language": "en",
@@ -219,9 +309,15 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/fTDzKoQIh1HeyjfpG5AHMi2jxAJ.jpg",
-        "genre_ids": [
-            28,
-            35
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            }
         ],
         "id": 682377,
         "original_language": "en",
@@ -238,10 +334,19 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/gEjNlhZhyHeto6Fy5wWy5Uk3A9D.jpg",
-        "genre_ids": [
-            28,
-            27,
-            53
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
         ],
         "id": 581392,
         "original_language": "ko",
@@ -258,12 +363,27 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/8rIoyM6zYXJNjzGseT3MRusMPWl.jpg",
-        "genre_ids": [
-            14,
-            10751,
-            12,
-            35,
-            27
+        "genres": [
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            }
         ],
         "id": 531219,
         "original_language": "en",
@@ -280,11 +400,23 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/gnf4Cb2rms69QbCnGFJyqwBWsxv.jpg",
-        "genre_ids": [
-            53,
-            28,
-            18,
-            80
+        "genres": [
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 80,
+                "name": "Crime"
+            }
         ],
         "id": 671039,
         "original_language": "fr",
@@ -301,9 +433,15 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/iQxJuPqCGOO4Iy3uFbMWCIGHkwE.jpg",
-        "genre_ids": [
-            10752,
-            28
+        "genres": [
+            {
+                "id": 10752,
+                "name": "War"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            }
         ],
         "id": 635780,
         "original_language": "en",
@@ -320,12 +458,27 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/d1sVANghKKMZNvqjW0V6y1ejvV9.jpg",
-        "genre_ids": [
-            16,
-            28,
-            12,
-            14,
-            18
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
         ],
         "id": 635302,
         "original_language": "ja",
@@ -342,12 +495,27 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/wu1uilmhM4TdluKi2ytfz8gidHf.jpg",
-        "genre_ids": [
-            16,
-            14,
-            12,
-            35,
-            10751
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
         ],
         "id": 400160,
         "original_language": "en",
@@ -364,11 +532,23 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/54yOImQgj8i85u9hxxnaIQBRUuo.jpg",
-        "genre_ids": [
-            28,
-            80,
-            18,
-            53
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 80,
+                "name": "Crime"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
         ],
         "id": 539885,
         "original_language": "en",
@@ -385,11 +565,23 @@ const movies = [
     {
         "adult": false,
         "backdrop_path": "/aO5ILS7qnqtFIprbJ40zla0jhpu.jpg",
-        "genre_ids": [
-            28,
-            53,
-            12,
-            18
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
         ],
         "id": 741067,
         "original_language": "en",

@@ -56,7 +56,7 @@ export const getPopularMovies = (page = 1) => {
     });
 };
 */
-
+/*
 export const getNowPlayingMovies = (page = 1) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=${page}`
@@ -70,7 +70,8 @@ export const getNowPlayingMovies = (page = 1) => {
       throw error
     });
 };
-
+*/
+/*
 export const getMovie = (args) => {
   const [, idPart] = args.queryKey;
   const { id } = idPart;
@@ -86,6 +87,7 @@ export const getMovie = (args) => {
       throw error
     });
 };
+*/
 
 export const getActor = (args) => {
   const [, idPart] = args.queryKey;

@@ -41,39 +41,65 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         component="ul"
         sx={{ ...root }}
       >
-        <li>
-          <Chip label="Genres" sx={{ ...chip }} color="primary" />
-        </li>
-        {movie.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} sx={{ ...chip }} />
+        {
+          movie.genres
+          &&
+          <li>
+            <Chip label="Genres" sx={{ ...chip }} color="primary" />
           </li>
-        ))}
+          &&
+          movie.genres.map((g) => (
+            <li key={g.name}>
+              <Chip label={g.name} sx={{ ...chip }} />
+            </li>
+          ))}
       </Paper>
       <Paper component="ul" sx={{ ...root }}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
-        />
-        <Chip
-          icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count}`}
-        />
-        <Chip label={`Released: ${movie.release_date}`} />
+        {
+          movie.runtime
+          &&
+          <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        }
+        {
+          movie.revenue
+          &&
+          <Chip
+            icon={<MonetizationIcon />}
+            label={`${movie.revenue.toLocaleString()}`}
+          />
+        }
+        {
+          movie.vote_average
+          &&
+          movie.vote_count
+          &&
+          <Chip
+            icon={<StarRate />}
+            label={`${movie.vote_average} (${movie.vote_count}`}
+          />
+        }
+        {
+          movie.release_date
+          &&
+          <Chip label={`Released: ${movie.release_date}`} />
+        }
       </Paper>
       <Paper
         component="ul"
         sx={{ ...root }}
       >
-        <li>
-          <Chip label="Production Countries" sx={{ ...chip }} color="primary" />
-        </li>
-        {movie.production_countries.map((c) => (
-          <li key={c.name}>
-            <Chip label={c.name} sx={{ ...chip }} />
+        {
+          movie.production_countries &&
+          <li>
+            <Chip label="Production Countries" sx={{ ...chip }} color="primary" />
           </li>
-        ))}
+          &&
+          movie.production_countries.map((c) => (
+            <li key={c.name}>
+              <Chip label={c.name} sx={{ ...chip }} />
+            </li>
+          ))
+        }
       </Paper>
       <Typography variant="h5" component="h3">
         Actors
@@ -81,7 +107,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       <Paper
         sx={{ ...root }}
       >
-        <MovieActors movie= {movie} ></MovieActors>
+        <MovieActors movie={movie} ></MovieActors>
       </Paper>
       <Typography variant="h5" component="h3">
         Recommendations
@@ -89,7 +115,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       <Paper
         sx={{ ...root }}
       >
-        <MovieRecommendations movie= {movie} ></MovieRecommendations>
+        <MovieRecommendations movie={movie} ></MovieRecommendations>
       </Paper>
       <Fab
         color="secondary"
