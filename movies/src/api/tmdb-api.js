@@ -41,6 +41,7 @@ export const getTopRatedMovies = (page = 1) => {
     });
 };
 */
+/*
 export const getPopularMovies = (page = 1) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=${page}`
@@ -54,6 +55,7 @@ export const getPopularMovies = (page = 1) => {
       throw error
     });
 };
+*/
 
 export const getNowPlayingMovies = (page = 1) => {
   return fetch(
