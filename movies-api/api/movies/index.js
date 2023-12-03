@@ -10,6 +10,7 @@ import {
     getNowPlayingMovies,
     getActor,
     getMovieImages,
+    getActorImages,
 } from '../tmdb-api';
 
 const router = express.Router();
@@ -95,6 +96,12 @@ router.get('/actor/:id', asyncHandler(async (req, res) => {
 router.get('/:id/images', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const images = await getMovieImages(id)
+    res.status(200).json(images);
+}));
+
+router.get('/actor/:id/images', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const images = await getActorImages(id)
     res.status(200).json(images);
 }));
 

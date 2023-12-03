@@ -1,16 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
+import { UserContext } from "../../contexts/userContext";
 import Header from "../headerMovieList";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getActorImages } from "../../api/tmdb-api";
+import { getActorImages } from "../../api/movies-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
 const TemplateActorPage = ({ actor, title, children }) => {
+  const { token } = useContext(UserContext)
   const { data , error, isLoading, isError } = useQuery(
-    ["actorImages", { id: actor.id }],
-    getActorImages
+    "actorImages"+actor.id ,
+    () => getActorImages(actor.id, token)
   );
 
   if (isLoading) {
