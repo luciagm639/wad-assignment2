@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { getTopRatedMovies } from "../api/tmdb-api";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../contexts/userContext";
+import { getTopRatedMovies } from "../api/movies-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -7,8 +8,9 @@ import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch'
 import { Grid, Pagination } from "@mui/material";
 
 const TopRatedMoviesPage = (props) => {
+  const { token } = useContext(UserContext)
 
-  const { data, error, isLoading, isError } = useQuery('topRated', () => getTopRatedMovies(1))
+  const { data, error, isLoading, isError } = useQuery('topRated', () => getTopRatedMovies(1, token))
 
   const [movies, setMovies] = useState([]);
 
@@ -29,7 +31,7 @@ const TopRatedMoviesPage = (props) => {
   const handleChangePage = async (e, value) => {
     try {
       // Realiza tu consulta y obtén los datos
-      const data = await getTopRatedMovies(value);
+      const data = await getTopRatedMovies(value, token)
 
       if (data && data.results) {
         setMovies(data.results);

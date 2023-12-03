@@ -26,6 +26,7 @@ export const getUpcomingMovies = (page = 1) => {
     });
 };
 */
+/*
 export const getTopRatedMovies = (page = 1) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=${page}`
@@ -39,7 +40,7 @@ export const getTopRatedMovies = (page = 1) => {
       throw error
     });
 };
-
+*/
 export const getPopularMovies = (page = 1) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=${page}`
