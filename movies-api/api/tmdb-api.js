@@ -91,9 +91,7 @@ export const getMovie = (id) => {
         });
 };
 
-export const getActor = (args) => {
-    const [, idPart] = args.queryKey;
-    const { id } = idPart;
+export const getActor = (id) => {
     return fetch(
         `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.TMDB_KEY}`
     ).then((response) => {

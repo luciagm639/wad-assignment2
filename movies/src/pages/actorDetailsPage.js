@@ -1,16 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
+import { UserContext } from '../contexts/userContext'
 import { useParams } from 'react-router-dom';
 import ActorDetails from "../components/actorDetails/";
 import TemplateActorPage from "../components/templateActorPage";
-import { getActor } from '../api/tmdb-api'
+import { getActor } from '../api/movies-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 
 const ActorPage = (props) => {
+  const { token } = useContext(UserContext)
   const { id } = useParams();
   const { data: actor, error, isLoading, isError } = useQuery(
-    ["actor", { id: id }],
-    getActor
+    ["actor"+id],
+    () => getActor(id, token)
   );
 
   if (isLoading) {

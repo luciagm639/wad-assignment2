@@ -88,7 +88,7 @@ export const getMovie = (args) => {
     });
 };
 */
-
+/*
 export const getActor = (args) => {
   const [, idPart] = args.queryKey;
   const { id } = idPart;
@@ -104,7 +104,7 @@ export const getActor = (args) => {
       throw error
     });
 };
-
+*/
 /*
 export const getGenres = async () => {
   return fetch(
