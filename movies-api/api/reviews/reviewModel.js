@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
 
 const Schema = mongoose.Schema;
 
 
 const ReviewSchema = new Schema({
   movie: { type: Number, required: true },
-  author: { type: String },
+  author: { type: String, required: true },
   content: { type: String },
-  created_at: { type: String },
-  id: { type: String, required: true, unique: true }
+  created_at: { type: String, required: true }
 });
 
 ReviewSchema.statics.findByMovieDBId = function (id) {
@@ -16,7 +16,7 @@ ReviewSchema.statics.findByMovieDBId = function (id) {
 };
 
 ReviewSchema.statics.findByReviewDBId = function (id) {
-  return this.findOne({ id: id });
+  return this.findOne({ _id: id });
 };
 
 export default mongoose.model('Reviews', ReviewSchema);
