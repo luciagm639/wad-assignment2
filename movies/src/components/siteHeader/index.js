@@ -33,6 +33,8 @@ const SiteHeader = ({ history }, props) => {
   })
 
   const menuOptions = [
+    { label: "signup", path: "/signup" },
+    { label: "login", path: "/login" },
     { label: "Home", path: "/home" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Must Watch", path: "/movies/mustWatch" },

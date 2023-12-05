@@ -13,19 +13,26 @@ router.get('/', async (req, res) => {
 
 // register(Create)/Authenticate User
 router.post('/', asyncHandler(async (req, res) => {
-    try {
-        if (!req.body.username || !req.body.password) {
-            return res.status(400).json({ success: false, msg: 'Username and password are required.' });
-        }
-        if (req.query.action === 'register') {
+    if (!req.body.username || !req.body.password) {
+        return res.status(400).json({ success: false, msg: 'Username and password are required.' });
+    }
+
+    if (req.query.action === 'register') {
+        try {
             await registerUser(req, res);
-        } else {
-            await authenticateUser(req, res);
+        } catch (error) {
+            // Log the error and return a generic error message
+            console.error(error);
+            res.status(500).json({ success: false, msg: 'User already created' });
         }
-    } catch (error) {
-        // Log the error and return a generic error message
-        console.error(error);
-        res.status(500).json({ success: false, msg: 'Internal server error.' });
+    } else {
+        try {
+            await authenticateUser(req, res);
+        } catch (error) {
+            // Log the error and return a generic error message
+            console.error(error);
+            res.status(500).json({ success: false, msg: 'Internal server error.' });
+        }
     }
 }));
 
@@ -36,7 +43,7 @@ router.put('/:id', async (req, res) => {
         _id: req.params.id,
     }, req.body);
     if (result.matchedCount) {
-        res.status(200).json({ code:200, msg: 'User Updated Sucessfully' });
+        res.status(200).json({ code: 200, msg: 'User Updated Sucessfully' });
     } else {
         res.status(404).json({ code: 404, msg: 'Unable to Update User' });
     }
@@ -44,8 +51,13 @@ router.put('/:id', async (req, res) => {
 
 async function registerUser(req, res) {
     // Add input validation logic here
-    await User.create(req.body);
-    res.status(201).json({ success: true, msg: 'User successfully created.' });
+    const validPswd = validatePassword(req.body.password)
+    if (validPswd) {
+        await User.create(req.body);
+        res.status(201).json({ success: true, msg: 'User successfully created.' });
+    } else {
+        res.status(401).json({ success: false, msg: 'Invalid password.' });
+    }
 }
 
 async function authenticateUser(req, res) {
@@ -61,6 +73,11 @@ async function authenticateUser(req, res) {
     } else {
         res.status(401).json({ success: false, msg: 'Wrong password.' });
     }
+}
+
+function validatePassword (passw) {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    return regex.test(passw)
 }
 
 export default router;

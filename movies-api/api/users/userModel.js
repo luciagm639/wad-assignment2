@@ -12,6 +12,12 @@ UserSchema.methods.comparePassword = async function (passw) {
   return await bcrypt.compare(passw, this.password); 
 }
 
+UserSchema.methods.validatePassword = async function (passw) { 
+  const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  const found = paragraph.match(regex);
+  return found.length === passw.length
+}
+
 UserSchema.statics.findByUserName = function (username) {
   return this.findOne({ username: username });
 };

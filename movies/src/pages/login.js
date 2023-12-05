@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { UserContext } from "../contexts/userContext";
 import { useContext } from 'react';
-import { useEffect } from 'react';
 import { CardHeader, Card, Typography, CardContent, Grid, TextField, Button } from '@mui/material';
 import { authenticateUser } from '../api/users-api';
 
@@ -12,8 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const { loggedIn, logIn, setToken } = useContext(UserContext)
-    useEffect(() => { if (loggedIn) { navigate("/home") } })
+    const { logIn, setToken } = useContext(UserContext)
 
     const onLogin = async (e) => {
         e.preventDefault();
@@ -24,12 +22,11 @@ const Login = () => {
                 const token = success.token.split(' ')[1];
                 console.log(token);
                 setToken(token)
-                navigate("/login")
+                navigate("/home")
             })
             .catch((error) => {
-                const errorCode = error.code;
+                console.error(error.message);
                 setErrorMessage(error.message);
-                console.log(errorCode, errorMessage);
             })
     }
 

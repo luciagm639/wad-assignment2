@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from "../contexts/userContext";
 import { useContext } from 'react';
@@ -14,7 +14,6 @@ const Signup = () => {
 
     const { loggedIn } = useContext(UserContext)
     console.log(loggedIn)
-    useEffect(() => { if (loggedIn) { navigate("/home") } })
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -25,9 +24,8 @@ const Signup = () => {
                 navigate("/login")
             })
             .catch((error) => {
-                const errorCode = error.code;
+                console.error(error.message);
                 setErrorMessage(error.message);
-                console.log(errorCode, errorMessage);
             })
     }
 
