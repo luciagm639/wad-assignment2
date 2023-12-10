@@ -11,6 +11,16 @@ router.get('/', async (req, res) => {
     res.status(200).json(users);
 });
 
+// Get user by username
+router.get('/:username', async (req, res) => {
+    console.log(req.params.username)
+    const user = await User.findByUserName(req.params.username);
+    if (!user) {
+        return res.status(401).json({ success: false, msg: 'User not found.' });
+    }
+    res.status(200).json(user);
+});
+
 // register(Create)/Authenticate User
 router.post('/', asyncHandler(async (req, res) => {
     if (!req.body.username || !req.body.password) {
@@ -51,6 +61,12 @@ router.put('/:id', async (req, res) => {
 
 async function registerUser(req, res) {
     // Add input validation logic here
+
+    const validUsn = validateUsername(req.body.username)
+    if (!validUsn) {
+        res.status(401).json({ success: false, msg: 'Invalid username.' });
+    }
+
     const validPswd = validatePassword(req.body.password)
     if (validPswd) {
         await User.create(req.body);
@@ -73,6 +89,11 @@ async function authenticateUser(req, res) {
     } else {
         res.status(401).json({ success: false, msg: 'Wrong password.' });
     }
+}
+
+function validateUsername (username) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(username)
 }
 
 function validatePassword (passw) {
