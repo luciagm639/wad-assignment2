@@ -3,22 +3,22 @@ import React, { useState } from "react";
 export const UserContext = React.createContext(null);
 
 const UserContextProvider = (props) => {
-  const [loggedIn, setLoggedIn] = useState()
+  const [username, setUsername] = useState()
   const [token, setToken] = useState()
 
-  const logIn = () => {
-    setLoggedIn( true )
+  const logIn = (username) => {
+    setUsername( username )
   };
   
   // We will use this function in a later section
-  const logOut = () => {
-    setLoggedIn( false )
+  const logOut = (username) => {
+    setUsername( username )
   };
 
   return (
     <UserContext.Provider
       value={{
-        loggedIn,
+        username,
         logIn,
         logOut,
         token,

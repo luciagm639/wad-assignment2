@@ -18,7 +18,7 @@ const Login = () => {
         await authenticateUser(email, password)
             .then((success) => {
                 // Logged in
-                logIn();
+                logIn(email);
                 const token = success.token.split(' ')[1];
                 console.log(token);
                 setToken(token)

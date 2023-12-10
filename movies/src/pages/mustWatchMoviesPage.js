@@ -1,15 +1,23 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
-import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
-import { useQueries } from "react-query";
+import PageTemplate from "../components/templateMovieListPage";
+import { useQueries, useQuery } from "react-query";
 import { getMovie } from "../api/movies-api";
+import {getUser} from "../api/users-api"
 import Spinner from '../components/spinner'
 import RemoveFromMustWatch from "../components/cardIcons/removeFromMustWatch";
 
 const MustWatchMoviesPage = () => {
-  const { token } = useContext(UserContext)
-  const {mustWatch: movieIds } = useContext(MoviesContext);
+  const {mustWatch: moviesIdContext } = useContext(MoviesContext);
+  const { token, username } = useContext(UserContext)
+  const user = useQuery(username, () => getUser(username));
+  
+  const data = user.data
+  
+  const mustwatch = data && data.mustWatch
+  
+  let movieIds = moviesIdContext.length > 0 ? moviesIdContext : (mustwatch ? mustwatch : [])
 
   // Create an array of queries and run in parallel.
   const mustWatchMovieQueries = useQueries(

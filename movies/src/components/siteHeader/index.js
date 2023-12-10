@@ -24,10 +24,10 @@ const SiteHeader = ({ history }, props) => {
 
   const navigate = useNavigate();
 
-  const {loggedIn} = useContext(UserContext)
+  const {username} = useContext(UserContext)
   const pathName = useLocation().pathname
-  useEffect(() => { 
-    if (!loggedIn && (pathName !== "/login" && pathName !== "/signup" && pathName !== "/")) { 
+  useEffect(() => {   
+    if (!username && (pathName !== "/login" && pathName !== "/signup" && pathName !== "/")) { 
       navigate("/") 
     } 
   })

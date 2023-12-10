@@ -1,22 +1,30 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
-import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
-import { useQueries } from "react-query";
+import PageTemplate from "../components/templateMovieListPage";
+import { useQueries, useQuery } from "react-query";
 import { getMovie } from "../api/movies-api";
+import { getUser } from "../api/users-api";
 import Spinner from '../components/spinner'
 import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
 import WriteReview from "../components/cardIcons/writeReview";
 
 const FavoriteMoviesPage = () => {
-  const { token } = useContext(UserContext)
-  const {favorites: movieIds } = useContext(MoviesContext);
+  const {favorites: moviesIdContext } = useContext(MoviesContext);
+  const { token, username } = useContext(UserContext)
+  const user = useQuery(username, () => getUser(username));
+  
+  const data = user.data
+  
+  const favorites = data && data.favorites
+  
+  let movieIds = moviesIdContext.length > 0 ? moviesIdContext : (favorites ? favorites : [])
 
   // Create an array of queries and run in parallel.
   const favoriteMovieQueries = useQueries(
     movieIds.map((movieId) => {
       return {
-        queryKey: ["movie"+movieId],
+        queryKey: ["movie" + movieId],
         queryFn: () => getMovie(movieId, token),
       };
     })
